@@ -134,3 +134,14 @@ chore: Build ve yapılandırma dosyaları güncellendi.
 ✅ **Dokümantasyon ve Kod Açıklamaları**  
 - [ ] Readme veya dökümantasyon güncellendi mi?  
 - [ ] Karmaşık fonksiyonlar açıklanmış mı?  
+
+---
+
+## **5. Patch Checker**
+
+✅ **Patch Checker Kullanımı**  
+
+```bash
+node patch-checker.js --patch ECO-348__Bottomsheet_added1.patch --rules cursorrules.json
+```
+
