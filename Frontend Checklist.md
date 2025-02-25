@@ -123,7 +123,7 @@ hotfix(payment): [JIRA-505] Prod ortamında ödeme hatası giderildi
 
 ### 📌 Merge Commit Örneği
 ```
-merge: [JIRA-606] Develop şubesine yeni özellikler eklendi
+merge: [JIRA-606] Development branch yeni özellikler eklendi
 ```
 
 Bu kurallar, commit mesajlarının **daha düzenli, okunaklı ve takip edilebilir** olmasını sağlayacaktır. 🚀`  
