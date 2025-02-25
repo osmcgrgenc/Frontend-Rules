@@ -1,0 +1,20 @@
+{
+  "name": "frontend-checklist",
+  "version": "1.0.0",
+  "description": "Bu repo, Enoca ekibinin frontend geliştirme süreçlerinde uyması gereken standartları ve kuralları içermektedir.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.0.0"
+  },
+  "bin": {
+    "cursor-check": "./patch-checker.js"
+  },
+  "type": "module"
+}
