@@ -1,0 +1,145 @@
+{
+  "version": "1.0",
+  "name": "Frontend Kod İnceleme Kuralları",
+  "description": "Frontend kod değişikliklerini incelemek için kurallar",
+  "rules": {
+    "general": {
+      "naming": {
+        "components": "PascalCase",
+        "variables": "camelCase",
+        "constants": "UPPER_SNAKE_CASE",
+        "severity": "error"
+      },
+      "fileSize": {
+        "maxLines": 400,
+        "severity": "warning"
+      },
+      "lineLength": {
+        "maxChars": 100,
+        "severity": "warning"
+      }
+    },
+    "react": {
+      "hooks": {
+        "dependencies": true,
+        "severity": "error"
+      },
+      "props": {
+        "destructuring": true,
+        "propTypes": true,
+        "severity": "error"
+      },
+      "components": {
+        "singleResponsibility": true,
+        "maxLogicNesting": 3,
+        "severity": "warning"
+      }
+    },
+    "css": {
+      "naming": {
+        "classes": "kebab-case",
+        "severity": "warning"
+      },
+      "units": {
+        "preferred": ["rem", "em", "%", "vh", "vw"],
+        "avoid": ["px"],
+        "severity": "info"
+      }
+    },
+    "typescript": {
+      "typing": {
+        "noAny": true,
+        "interfacesOverTypes": true,
+        "severity": "warning"
+      },
+      "imports": {
+        "sorted": true,
+        "noUnused": true,
+        "severity": "warning"
+      }
+    },
+    "tests": {
+      "coverage": {
+        "minimum": 70,
+        "severity": "warning"
+      },
+      "naming": {
+        "pattern": "should_*",
+        "severity": "info"
+      }
+    },
+    "git": {
+      "commitMessage": {
+        "conventional": true,
+        "severity": "warning"
+      },
+      "patchSize": {
+        "maxLines": 300,
+        "severity": "info"
+      }
+    }
+  },
+  "checklist": [
+    {
+      "category": "Kod Kalitesi",
+      "items": [
+        "Tekrarlanan kod parçaları yok",
+        "Fonksiyonlar tek bir iş yapıyor",
+        "Değişken isimleri anlamlı ve tutarlı",
+        "Yorum satırları gerekli ve açıklayıcı",
+        "Magic number/string kullanımı yok"
+      ]
+    },
+    {
+      "category": "Performans",
+      "items": [
+        "Gereksiz render'lar önleniyor",
+        "Büyük paketler lazy-loading ile yükleniyor",
+        "Döngüler optimize edilmiş",
+        "Memory leak riski yok",
+        "API çağrıları optimal sayıda"
+      ]
+    },
+    {
+      "category": "Güvenlik",
+      "items": [
+        "Kullanıcı girdileri doğrulanıyor",
+        "Hassas bilgiler korunuyor",
+        "XSS açıkları önleniyor",
+        "Yetkilendirme kontrolleri mevcut"
+      ]
+    },
+    {
+      "category": "Erişilebilirlik",
+      "items": [
+        "Semantik HTML kullanılıyor",
+        "ARIA özellikleri doğru kullanılıyor",
+        "Klavye kullanımı destekleniyor",
+        "Renk kontrastı yeterli"
+      ]
+    },
+    {
+      "category": "Testler",
+      "items": [
+        "Birim testleri yazılmış",
+        "Entegrasyon testleri mevcut",
+        "Edge case'ler test edilmiş",
+        "Mock'lar doğru kullanılmış"
+      ]
+    }
+  ],
+  "patchAnalysis": {
+    "enabled": true,
+    "thresholds": {
+      "codeAddedRatio": 0.7,
+      "testsAddedRatio": 0.3,
+      "maxComplexityIncrease": 5
+    },
+    "ignorePatterns": [
+      "node_modules/**",
+      "**/*.min.js",
+      "build/**",
+      "dist/**"
+    ]
+  }
+} 
