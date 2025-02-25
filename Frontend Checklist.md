@@ -3,15 +3,15 @@
 ### **1.1. Genel Kurallar**
 ✅ **Kodun Anlaşılabilirliği**  
 - Açık ve anlaşılır değişken, fonksiyon ve sınıf isimleri kullanılmalı.  
-- Magic number (sabitsiz doğrudan kullanılan sayılar) yerine değişken tanımlanmalı.  
+- Magic number (sabitsiz doğrudan kullanılan sayılar) yerine değişken yada sabit tanımlanmalı.  
 - Fonksiyonlar tek bir iş yapmalı (Single Responsibility Principle - SRP).  
-- Gereksiz yorum satırları olmamalı, ancak karmaşık yerler için açıklayıcı yorumlar eklenmeli.
+- Gereksiz yorum satırları olmamalı, ancak karmaşık yerler için açıklayıcı yorumlar eklenmeli. Method ve değişkenin adı ne iş yaptığını anlatabilmeli.
 
 ✅ **Kodun Düzeni ve Formatı**  
 - **Linting ve Formatting:** ESLint ve Prettier gibi araçlarla kod biçimlendirilmiş olmalı.  
 - **Dosya Yapısı:** Modüler ve mantıklı bir şekilde organize edilmeli.  
-- **Imports:** Kullanılmayan import'lar olmamalı, import sıralaması belirlenmeli.  
-- **Tür Güvenliği:** TypeScript projelerinde `any` yerine kesin tipler tanımlanmalı.
+- **Imports:** Kullanılmayan import'lar olmamalı, import sıralaması belirlenmeli ve relative path kullanımından kaçınılmalı, absolute path kullanılmalı.   
+- **Tip Güvenliği:** TypeScript projelerinde `any` yerine kesin tipler tanımlanmalı.
 
 ### **1.2. Angular İçin Özel Kurallar**
 ✅ **Bileşen Yönetimi**  
@@ -25,7 +25,7 @@
 
 ✅ **Angular Modülleri ve Yapılar**  
 - Lazy loading kullanılmalı.  
-- Component selector’lar `app-` prefix’i ile başlamalı.  
+- Component selector’lar `app-` prefix’i ile başlamalı. Projeye göre özelleştiriledebilir ancak prefix kullanılmalı.  
 - ViewChild ve ViewChildren kullanılmadan önce performans açısından incelenmeli.
 
 ### **1.3. React ve Next.js İçin Özel Kurallar**
@@ -39,9 +39,10 @@
 - Global state sadece gerekli olduğunda kullanılmalı.
 
 ✅ **Next.js Özel Kurallar**  
-- **getServerSideProps / getStaticProps** kullanımı SEO ve performans açısından değerlendirilmiş olmalı.  
+- **`getServerSideProps` / `getStaticProps` / `generateMetadata`** kullanımı SEO ve performans açısından değerlendirilmiş olmalı.  
 - API route'lar sadece gerekli olduğunda kullanılmalı.  
 - Sayfa bazlı yönlendirmelerde `next/link` ve `next/router` tercih edilmeli.
+- Resimler Image komponenti kullanılarak optimize edilmeli.
 
 ### **1.4. SAP Hybris Spartacus İçin Özel Kurallar**
 ✅ **Bileşen Yönetimi**  
@@ -55,25 +56,79 @@
 
 ---
 
-## **2. Commit Atma Kuralları (Commit Rules)**
+## **2.🚀 Commit Mesajı Standartları**
 
-✅ **Commit Mesaj Formatı (Conventional Commits Kullanılmalı)**  
-```
-feat: Yeni bir özellik eklendi.
-fix: Bir hata düzeltildi.
-refactor: Kod düzenlemesi yapıldı, ancak işlevsellik değişmedi.
-style: Sadece stil düzenlemeleri yapıldı.
-docs: Dokümantasyon güncellendi.
-test: Testler eklendi veya güncellendi.
-chore: Build ve yapılandırma dosyaları güncellendi.
+Commit mesajları, **Conventional Commits** kurallarıyla uyumlu olarak yazılmalı ve ilgili JIRA ticket numarası vb. eklenmelidir.
+
+### 📌 Format
+
+```plaintext
+<type>(<scope>): [<JIRA-XXX>] Kısa açıklama
 ```
 
-✅ **Örnek Doğru Commit Mesajları**  
-✔️ `feat(cart): Sepete ürün ekleme özelliği eklendi.`  
-✔️ `fix(auth): Giriş yaparken token hatası giderildi.`  
-✔️ `refactor(product-list): Kod düzenlendi ve performans iyileştirildi.`  
+- **`<type>`** → Commit türü (feat, fix, chore, refactor, docs, test, ci, perf, vb.)  
+- **`<scope>`** → (Opsiyonel) Etkilenen modül veya bileşen  
+- **`[JIRA-XXX]`** → İlgili JIRA ticket numarası  
+- **Kısa Açıklama** → Yapılan değişikliği net şekilde açıklayan mesaj  
 
-✅ **Yanlış Kullanımlar**  
+### 🔹 Commit Türleri ve Örnekler
+
+#### ✨ Yeni Özellik (feat)
+```
+feat(auth): [JIRA-123] Google ile giriş özelliği eklendi
+```
+➡ **Açıklama:** Auth modülüne Google ile giriş desteği eklendi.
+
+#### 🐞 Hata Düzeltme (fix)
+```
+fix(cart): [JIRA-456] Sepette yanlış fiyat hesaplama sorunu giderildi
+```
+➡ **Açıklama:** Sepette toplam fiyatın hatalı hesaplanması düzeltildi.
+
+#### 🔧 Refactoring (refactor)
+```
+refactor(api): [JIRA-789] Kullanıcı servisi yeniden düzenlendi
+```
+➡ **Açıklama:** API yapısı daha okunaklı hale getirildi, ancak işlevsellik değişmedi.
+
+#### 📖 Dokümantasyon Güncellemesi (docs)
+```
+docs(readme): [JIRA-101] Kurulum adımları eklendi
+```
+➡ **Açıklama:** Proje README dosyasına kurulum talimatları eklendi.
+
+#### 🛠 Yapısal Değişiklikler (chore)
+```
+chore(deps): [JIRA-202] Proje bağımlılıkları güncellendi
+```
+➡ **Açıklama:** Güncel bağımlılıklar projeye entegre edildi.
+
+#### 🚀 Performans İyileştirmesi (perf)
+```
+perf(query): [JIRA-303] SQL sorguları optimize edildi
+```
+➡ **Açıklama:** Büyük veri sorgularında performans artırıldı.
+
+#### 🧪 Testler (test)
+```
+test(auth): [JIRA-404] Kullanıcı girişi için unit test eklendi
+```
+➡ **Açıklama:** Auth modülü için test senaryoları yazıldı.
+
+#### 🔥 Acil Düzeltme (hotfix)
+```
+hotfix(payment): [JIRA-505] Prod ortamında ödeme hatası giderildi
+```
+➡ **Açıklama:** Ödeme işlemlerinde yaşanan kritik hata düzeltildi.
+
+### 📌 Merge Commit Örneği
+```
+merge: [JIRA-606] Develop şubesine yeni özellikler eklendi
+```
+
+Bu kurallar, commit mesajlarının **daha düzenli, okunaklı ve takip edilebilir** olmasını sağlayacaktır. 🚀`  
+
+### ❌ Yanlış Kullanımlar 
 ❌ `fixed bug`  
 ❌ `update file`  
 ❌ `some changes`
@@ -84,7 +139,7 @@ chore: Build ve yapılandırma dosyaları güncellendi.
 
 ✅ **Branch Kullanımı**  
 - **main / master** → Production  
-- **develop** → Geliştirme ortamı  
+- **development** → Geliştirme ortamı  
 - **feature/xxx** → Yeni özellik geliştirme  
 - **bugfix/xxx** → Hata düzeltmeleri  
 - **hotfix/xxx** → Acil müdahale gerektiren düzeltmeler  
@@ -94,6 +149,8 @@ chore: Build ve yapılandırma dosyaları güncellendi.
 - **PR mesajı açıklayıcı olmalı.**  
 - **PR review sürecinden geçmeden merge yapılmamalı.**  
 - **Rebase ile temiz bir commit geçmişi oluşturulmalı.**  
+- **Rebase dikkatsizce kullanılmamalı.**
+- **PR'a gerekli label'lar eklenmeli. Madde numarası, scope, merge vs.
 
 ✅ **Rebase & Squash Kullanımı**  
 - `git pull --rebase origin develop`  
@@ -129,7 +186,7 @@ chore: Build ve yapılandırma dosyaları güncellendi.
 
 ✅ **Git ve Commit Mesajları**  
 - [ ] Commit mesajları kurallara uygun mu?  
-- [ ] Gereksiz dosyalar commit’e eklenmiş mi?  
+- [ ] Gereksiz dosyalar veya satırlar commit’e eklenmiş mi?  
 
 ✅ **Dokümantasyon ve Kod Açıklamaları**  
 - [ ] Readme veya dökümantasyon güncellendi mi?  
