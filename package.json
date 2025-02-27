@@ -1,7 +1,7 @@
 {
   "name": "frontend-checklist",
   "version": "1.0.0",
-  "description": "Bu repo, Enoca ekibinin frontend geliştirme süreçlerinde uyması gereken standartları ve kuralları içermektedir.",
+  "description": "Bu repo, frontend geliştirme süreçlerinde uyması gereken standartları ve kuralları içermektedir.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

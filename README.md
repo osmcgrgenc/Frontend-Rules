@@ -1,6 +1,6 @@
 # Frontend Geliştirme Kuralları
 
-Bu repo, Enoca ekibinin frontend geliştirme süreçlerinde uyması gereken standartları ve kuralları içermektedir.
+Bu repo, frontend geliştirme süreçlerinde uyması gereken standartları ve kuralları içermektedir.
 
 ## İçindekiler
 
